@@ -26,13 +26,14 @@
         // CONSULTA PRINCIPAL BUSQUEDA 
         $sql_search= "SELECT * FROM cg.productos $where AND estatus = 1 ORDER BY nombre ASC LIMIT $offset, $per_page";
         $data_search = consulta($conexion, $sql_search);
+
+        if(count($data_search) > 0){
 ?>
+
                 <div class="container_pagination">
                     <?php echo paginate($page, $total_pages, $adjacents);?>
                 </div>
-                
 <?php
-        if(count($data_search) > 0){
             foreach ($data_search as $key => $value) {
 ?>
                 <div class="product">
@@ -50,7 +51,9 @@
                     <?php echo paginate($page, $total_pages, $adjacents);?>
                 </div>
 <?php
-        };
+        }else{
+            echo '<p>Producto '.$value_search.' no encontrado</p>';
+        }
     
     }
 
