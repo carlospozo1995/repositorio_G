@@ -1,5 +1,5 @@
 <?php
-     include "C:/laragon/www/carlos/G/dataBase/connect.php";
+    include "C:/laragon/www/carlos/G/dataBase/connect.php";
     $value = $_POST['value'];
 
     $action = (isset($_POST['action']) && $_REQUEST['action']) != NULL ? $_REQUEST['action']:'';
@@ -10,7 +10,14 @@
             echo '<p>Ingrese una palabra ha buscar </p>';
         }
         else{
-            $sql_search = "SELECT p.codproducto, p.nombre, p.descripcion, format(p.precio, 2) As precio, p.marca, p.imagen, m.item_menu, m.nombre_level FROM cg.productos p INNER JOIN cg.menu_categoria m ON p.id_categoria = m.id WHERE (nombre LIKE '%$value%' OR marca LIKE '%$value%') AND estatus = 1";
+            // CONSULTA DE CONTEO DE RESULTADO
+            $sql_count = "SELECT COUNT(*) AS total_products FROM cg.productos WHERE (nombre LIKE '%$value%' OR marca LIKE '%$value%') AND estatus = 1";
+            $data_count = consulta($conexion, $sql_count);
+            $total = $data_count[0]['total_products'];
+            // $total_pages = ceil($total/$per_page);   
+
+            // CONSULTA PRINCIPAL
+            $sql_search = "SELECT p.codproducto, p.nombre, p.descripcion, format(p.precio, 2) As precio, p.marca, p.imagen, m.item_menu, m.nombre_level FROM cg.productos p INNER JOIN cg.menu_categoria m ON p.id_categoria = m.id WHERE (nombre LIKE '%$value%' OR marca LIKE '%$value%' OR item_menu LIKE '%$value%') AND estatus = 1";
 
             $data_search = consulta($conexion, $sql_search);
 

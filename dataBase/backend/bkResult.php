@@ -14,17 +14,21 @@
         $adjacents  = 2;
         $offset = ($page - 1) * $per_page;
         //CONDICIONAL CONSULTA
-        $where = is_null($value_search) ? '' : "WHERE (nombre LIKE '%$value_search%' OR marca LIKE '%$value_search%')";
+        $where = is_null($value_search) ? '' : "WHERE (nombre LIKE '%$value_search%' OR marca LIKE '%$value_search%' OR item_menu LIKE '%$value_search%')";
 
         //CONSULTA CANTIDAD DE REGISTRO DEVUELTOS
-        $sql_count = "SELECT COUNT(*) AS total_products FROM cg.productos $where AND estatus = 1";
+        $sql_count = "SELECT COUNT(p.nombre) AS total_products, COUNT(p.marca)AS total_products, COUNT(m.item_menu) AS total_products FROM cg.productos p INNER JOIN cg.menu_categoria m ON p.id_categoria = m.id $where AND estatus = 1";
 
         $data_count =  consulta($conexion, $sql_count);
         $total = $data_count[0]['total_products'];
         $total_pages = ceil($total/$per_page);
 
+
+         // $sql_search = "SELECT p.codproducto, p.nombre, p.descripcion, format(p.precio, 2) As precio, p.marca, p.imagen, m.item_menu, m.nombre_level FROM cg.productos p INNER JOIN cg.menu_categoria m ON p.id_categoria = m.id WHERE (nombre LIKE '%$value%' OR marca LIKE '%$value%' OR item_menu LIKE '%$value%') AND estatus = 1";
+
+
         // CONSULTA PRINCIPAL BUSQUEDA 
-        $sql_search= "SELECT * FROM cg.productos $where AND estatus = 1 ORDER BY nombre ASC LIMIT $offset, $per_page";
+        $sql_search= "SELECT p.codproducto, p.nombre, p.descripcion, format(p.precio, 2) As precio, p.marca, p.imagen, m.item_menu, m.nombre_level FROM cg.productos p INNER JOIN cg.menu_categoria m ON p.id_categoria = m.id $where AND estatus = 1 ORDER BY nombre ASC LIMIT $offset, $per_page";
         $data_search = consulta($conexion, $sql_search);
 
         if(count($data_search) > 0){
