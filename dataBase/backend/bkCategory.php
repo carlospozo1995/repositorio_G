@@ -59,13 +59,12 @@ include "C:/laragon/www/carlos/G/dataBase/connect.php";
 
             $data_Category = consulta($conexion, $sql_Category);
 
-?>
-                    <div class="container_pagination">
-                        <?php echo paginate($page, $total_pages, $adjacents);?>
-                    </div>
-<?php
-
             if(count($data_Category) > 0){
+?>
+            <div class="container_pagination">
+                <?php echo paginate($page, $total_pages, $adjacents);?>
+            </div>
+<?php
                 foreach ($data_Category as $key => $value) {
 ?>
                     <div class="product">
