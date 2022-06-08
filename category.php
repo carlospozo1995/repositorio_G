@@ -18,6 +18,5 @@
     </div>
     
     <?php require_once("puzzle/footer.php");?>
-    <div>prueba repositorio</div>
 </body>
 </html>
