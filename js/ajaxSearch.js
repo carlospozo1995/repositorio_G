@@ -25,7 +25,7 @@ $(document).ready(function() {
     
             },
             success: function(data){
-                // console.log(data);
+                console.log(data);
                 if (inputSearch.value.length > 2) {
                     let products = '';
                     if (data.length > 0) {
