@@ -21,7 +21,7 @@
             </div>
         
             <div class="search_container">
-                <form action="result_search.php" method="GET" id="form_search">
+                <form action="result_search.php" method="GET" id="form_search" autocomplete="off">
                     <input type="search" name="buscar" id="inputSearch" placeholder="¿Qué producto necesita?" value="<?php if(!empty($_GET['buscar'])) {echo $_GET['buscar'];}else{echo "";} ?>">
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
