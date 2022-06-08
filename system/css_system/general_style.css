@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif';
+}
+
+:root{
+    --gOne: #0004D5;
+    --gTwo: #FE0000;
+    --gThree: #55565a;
+    --gFour: rgb(196, 196, 196);
+}

@@ -1,0 +1,125 @@
+header .header_container .top_header{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    background-color: rgba(22, 22, 22, 0.2);
+}
+
+header .header_container .top_header div{
+    display: flex;
+    align-items: center;
+    margin: 0px 10px;
+    color: var(--gThree);
+    font-weight: 500;
+}
+
+header .header_container .top_header div img{
+    vertical-align: bottom;
+    width: 32px;
+}
+
+header .header_container .nav_header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+header .header_container .nav_header .logo a img{
+    vertical-align: bottom;
+}
+
+header .header_container .nav_header .search_container{
+    position: relative;
+}
+
+header .header_container .nav_header .search_container form{
+    display: flex;
+    width: 600px;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    background: #FFF;
+}
+
+header .header_container .nav_header .search_container form input{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+header .header_container .nav_header .search_container form input:focus{
+    border: 2px solid blue;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+header .header_container .nav_header .search_container form button{
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0px 8px;
+    cursor: pointer;
+}
+
+/* CONTENEDOR FILTRADO DE BUSQUEDA */
+
+header .header_container .nav_header .search_container .box_search{
+    background: white;
+    position: absolute;
+    width: 100%;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    z-index: 100;
+    max-height: 250px;
+    display: none;
+}
+
+header .header_container .nav_header .search_container .box_search .item_search a{
+    display: flex;
+    padding: 10px 8px;
+    align-items: center;
+    color: rgb(51, 51, 51);
+    font-weight: 500;
+    font-size: 15px;
+}
+
+header .header_container .nav_header .search_container .box_search .item_search a:hover{
+    background: rgb(223, 223, 223);
+}
+
+header .header_container .nav_header .search_container .box_search .item_search a img{
+    width: 35px;
+    vertical-align: bottom;
+    margin-right: 10px;
+}
+
+.not_products{
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    color: red;
+    font-weight: 500;
+    font-size: 18px;
+    cursor: default;
+    justify-content: center;
+}
+
+.not_products i{
+    margin-right: 10px;
+    color: red;
+}

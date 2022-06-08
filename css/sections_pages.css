@@ -1,0 +1,13 @@
+.container_section .banner{
+    z-index: 10;
+    position: relative;
+}
+
+.container_section #loader{
+    display: flex;
+    justify-content: center;
+}
+
+.container_section #loader img{
+    width: 32px;
+}
