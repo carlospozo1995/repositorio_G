@@ -23,10 +23,6 @@
         $total = $data_count[0]['total_products'];
         $total_pages = ceil($total/$per_page);
 
-
-         // $sql_search = "SELECT p.codproducto, p.nombre, p.descripcion, format(p.precio, 2) As precio, p.marca, p.imagen, m.item_menu, m.nombre_level FROM cg.productos p INNER JOIN cg.menu_categoria m ON p.id_categoria = m.id WHERE (nombre LIKE '%$value%' OR marca LIKE '%$value%' OR item_menu LIKE '%$value%') AND estatus = 1";
-
-
         // CONSULTA PRINCIPAL BUSQUEDA 
         $sql_search= "SELECT p.codproducto, p.nombre, p.descripcion, format(p.precio, 2) As precio, p.marca, p.imagen, m.item_menu, m.nombre_level FROM cg.productos p INNER JOIN cg.menu_categoria m ON p.id_categoria = m.id $where AND estatus = 1 ORDER BY nombre ASC LIMIT $offset, $per_page";
         $data_search = consulta($conexion, $sql_search);
