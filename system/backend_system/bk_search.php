@@ -5,19 +5,26 @@
     $action = (isset($_POST['action']) && $_REQUEST['action']) != NULL ? $_REQUEST['action']:'';
 
     if ($action == 'ajax') {
+        include "bkPagination.php"; // DOCUMENTO DE LA PAGINACION
+        $page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
 
+        $per_page = 2;
+        $adjacents  = 2;
+        $offset = ($page - 1) * $per_page;
+        
         if ($value == '') {
             echo '<p>Ingrese una palabra ha buscar </p>';
         }
         else{
             // CONSULTA DE CONTEO DE RESULTADO
-            $sql_count = "SELECT COUNT(*) AS total_products FROM cg.productos WHERE (nombre LIKE '%$value%' OR marca LIKE '%$value%') AND estatus = 1";
-            $data_count = consulta($conexion, $sql_count);
+            $sql_count = "SELECT COUNT(p.nombre) AS total_products, COUNT(p.marca)AS total_products, COUNT(m.item_menu) AS total_products FROM cg.productos p INNER JOIN cg.menu_categoria m ON p.id_categoria = m.id WHERE (nombre LIKE '%$value%' OR marca LIKE '%$value%' OR item_menu LIKE '%$value%') AND estatus = 1";
+
+            $data_count =  consulta($conexion, $sql_count);
             $total = $data_count[0]['total_products'];
-            // $total_pages = ceil($total/$per_page);   
+            $total_pages = ceil($total/$per_page);
 
             // CONSULTA PRINCIPAL
-            $sql_search = "SELECT p.codproducto, p.nombre, p.descripcion, format(p.precio, 2) As precio, p.marca, p.imagen, m.item_menu, m.nombre_level FROM cg.productos p INNER JOIN cg.menu_categoria m ON p.id_categoria = m.id WHERE (nombre LIKE '%$value%' OR marca LIKE '%$value%' OR item_menu LIKE '%$value%') AND estatus = 1";
+            $sql_search = "SELECT p.codproducto, p.nombre, p.descripcion, format(p.precio, 2) As precio, p.marca, p.imagen, m.item_menu, m.nombre_level FROM cg.productos p INNER JOIN cg.menu_categoria m ON p.id_categoria = m.id WHERE (nombre LIKE '%$value%' OR marca LIKE '%$value%' OR item_menu LIKE '%$value%') AND estatus = 1 LIMIT $offset, $per_page";
 
             $data_search = consulta($conexion, $sql_search);
 
@@ -59,6 +66,10 @@
                     </tbody>
 
                 </table >
+
+                <div class="container_pagination">
+                    <?php echo paginate($page, $total_pages, $adjacents);?>
+                </div>
 <?php
             }
             else{

@@ -59,12 +59,10 @@
 		</tbody>
 
 	</table>
-<?php
-?>
 
-		<div class="container_pagination">
-            <?php echo paginate($page, $total_pages, $adjacents);?>
-        </div>
+	<div class="container_pagination">
+		<?php echo paginate($page, $total_pages, $adjacents);?>
+	</div>
 
 <?php
 	}
