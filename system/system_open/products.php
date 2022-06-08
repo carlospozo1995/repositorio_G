@@ -15,7 +15,7 @@
 	<h2>LISTA DE PRODUCTOS</h2>
 
 	<form action="search_result.php" method="GET" id="">
-	    <input type="search" name="buscar" id="" value="">
+	    <input type="search" name="buscar" id="search_product" value="">
 	    <button type="submit">Buscar</button>
 	</form>
 	

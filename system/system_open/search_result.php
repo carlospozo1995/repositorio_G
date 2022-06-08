@@ -20,7 +20,7 @@
 	</form>
 	
 	<div class="list_products_searh">
-		<!-- Lista de productos pintada por ajax -->
+		<!-- Lista de productos por busqueda pintada por ajax -->
 	</div>
 
 </body>
