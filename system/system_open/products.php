@@ -14,10 +14,7 @@
 
 	<h2>LISTA DE PRODUCTOS</h2>
 
-	<form action="search_result.php" method="GET" id="">
-	    <input type="search" name="buscar" id="search_product" value="">
-	    <button type="submit">Buscar</button>
-	</form>
+	<?php include "puzzle_system/search.php"; ?>
 	
 	<div id="loader"><img src="../img_system/loading.gif"></div>
 	<div class="list_products">

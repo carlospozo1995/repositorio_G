@@ -10,4 +10,5 @@
 <header>
 	<?php echo $_SESSION['nombre'] ?>
 	<a href="../backend_system/close_system.php">Salir</a>
+	<a href="system.php">Principal</a>
 </header>

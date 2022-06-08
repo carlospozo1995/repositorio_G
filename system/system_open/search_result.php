@@ -5,22 +5,20 @@
 		include "../links-scripts/links.php"; 
 		include "../links-scripts/scripts.php";
 	?>
-	<title>Busqueda productos</title>
+	<title>Productos busqueda</title>
 </head>
 <body>
 	<?php 
 		include "puzzle_system/header.php"; 
 	?>
 
-	<h2>LISTA DE PRODUCTOS BUSCADOS</h2>
+	<h2>Busqueda</h2>
 
-	<form action="search_result.php" method="GET" id="">
-	    <input type="search" name="buscar" id="" value="">
-	    <button type="submit">Buscar</button>
-	</form>
+	<?php include "puzzle_system/search.php"; ?>
 	
-	<div class="list_products_searh">
-		<!-- Lista de productos por busqueda pintada por ajax -->
+	<!-- <div id="loader"><img src="../img_system/loading.gif"></div> -->
+	<div class="search_products">
+		<!-- Lista de productos pintada por ajax -->
 	</div>
 
 </body>
