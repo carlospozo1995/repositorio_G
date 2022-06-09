@@ -16,7 +16,7 @@
 
 	<?php include "puzzle_system/search.php"; ?>
 	
-	<!-- <div id="loader"><img src="../img_system/loading.gif"></div> -->
+	<div id="loader"><img src="../img_system/loading.gif"></div>
 	<div class="search_products">
 		<!-- Lista de productos pintada por ajax -->
 	</div>

@@ -16,12 +16,14 @@ function loadResult(page) {
             page:page,
         },
         beforeSend: function(objeto){
+            $("#loader").html('<img src="../img_system/loading.gif">');
         },
         complete: function(){
            
         },
         success: function(data){
             $(".search_products").html(data).fadeIn('slow');
+            $("#loader").html("");
         },
         error: function(e){
             console.log(e);
