@@ -46,11 +46,11 @@
 			echo "<td>".$value['descripcion']."</td>";
 			echo "<td>".'$'.$value['precio']."</td>";
 			echo "<td>".$value['marca']."</td>";
-			echo "<td><img style='width:75px' src='../../uploads/".$value['imagen']."' alt=''></td>";
+			echo "<td><img style='width:60px' src='../../uploads/".$value['imagen']."' alt=''></td>";
 			echo "<td>".$value['nombre_level'].$value['item_menu']."</td>";
 			echo "<td>";
-			echo '<a href="edit_product.php?cod='.$value["codproducto"].'">Editar</a>';
-			echo ' | <a href="javascript:void(0)">Eliminar</a>';
+			echo '<a href="edit_product.php?cod='.$value["codproducto"].'"><img src="../img_system/edit.png" title="Editar producto"></a>';
+			echo ' | <a href="javascript:void(0)"><img src="../img_system/delete.png" title="Eliminar producto"></a>';
 			echo"</td>";
 			echo  "</tr>";
 		}
@@ -59,7 +59,7 @@
 		</tbody>
 
 	</table>
-
+	
 	<div class="container_pagination">
 		<?php echo paginate($page, $total_pages, $adjacents);?>
 	</div>
