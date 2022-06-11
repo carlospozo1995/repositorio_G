@@ -15,9 +15,12 @@
     if (count($data_exist) == 0) {
         header('location:../system_open/products.php');
     }else{
-       
+        foreach ($data_exist as $key => $value) {
+            $cod_producto = $value['codproducto'];
+            $nombre_prod = $value['nombre'];
+            $marca_prod = $value['marca'];
+        }
     }
-
-
+    
 
 ?>
