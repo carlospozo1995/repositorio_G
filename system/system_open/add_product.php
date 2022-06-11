@@ -18,21 +18,27 @@
 
 			<form action="" method="POST" enctype="multipart/form-data" autocomplete="off">
 				<div class="msm_alert">
-					<?php echo $alert ?$alert:''; ?>
+				<?php if (!empty($_POST)) {
+						echo $alert;
+					} ?>
 				</div>
 
-				<input type="text" name="name" placeholder="Nombre" value="">
-				<input type="text" name="precio" placeholder="Precio" value="">
-				<input type="text" name="marca" placeholder="Marca" value="">
+				<input type="text" name="name" placeholder="Nombre" value="<?php if(!empty($_POST)){echo $name;} ?>">
+				<input type="text" name="precio" placeholder="Precio" value="<?php if(!empty($_POST)){echo $price;} ?>">
+				<input type="text" name="marca" placeholder="Marca" value="<?php if(!empty($_POST)){echo $mark;} ?>">
 				<label for="categoria">Categoria</label>
-				<select name="categoria" id="categoria">
+				<select id="categoria" name="categoria">
 					<?php
 					
+					// CONSULTA PARA OBTENER LOS DATOS DE LA CATEGORIA
+
+					$sql_category = "SELECT * FROM cg.menu_categoria where level_product LIKE '%level3%' ORDER BY item_menu ASC";
+
+					$data_category = consulta($conexion, $sql_category);
+
 					if (count($data_category) > 0) {
 						foreach ($data_category as $key => $value) {
-					?>
-							<option value="<?php echo $value['id'] ?>"><?php echo $value['nombre_level'].$value['item_menu'] ?></option>
-					<?php
+							echo "<option value='".$value['id']."'>".$value['nombre_level'].$value['item_menu']."</option>";
 						}
 					}
 
@@ -50,7 +56,7 @@
 			        <div id="form_alert"></div>
 				</div>
 				
-				<!-- <textarea name="descripcion" placeholder="Descripción"></textarea> -->
+				<textarea name="descripcion" placeholder="Descripción"></textarea>
 				<button type="submit">Agregar</button>
 
 			</form>
