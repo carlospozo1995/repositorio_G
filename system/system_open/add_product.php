@@ -18,18 +18,16 @@
 
 			<form action="" method="POST" enctype="multipart/form-data" autocomplete="off">
 				<div class="msm_alert">
-					<?php if (!empty($_POST)) {
-						echo $alert;
-					} ?>
+					<?php echo $alert ?$alert:''; ?>
 				</div>
 
-				<input type="text" name="name" placeholder="Nombre" value="<?php if(!empty($_POST)){echo $name;} ?>">
-				<input type="text" name="precio" placeholder="Precio" value="<?php if(!empty($_POST)){echo $price;} ?>">
-				<input type="text" name="marca" placeholder="Marca" value="<?php if(!empty($_POST)){echo $mark;} ?>">
+				<input type="text" name="name" placeholder="Nombre" value="">
+				<input type="text" name="precio" placeholder="Precio" value="">
+				<input type="text" name="marca" placeholder="Marca" value="">
 				<label for="categoria">Categoria</label>
 				<select name="categoria" id="categoria">
 					<?php
-
+					
 					if (count($data_category) > 0) {
 						foreach ($data_category as $key => $value) {
 					?>
@@ -51,7 +49,8 @@
 			        </div>
 			        <div id="form_alert"></div>
 				</div>
-				<textarea name="descripcion" placeholder="Descripción"></textarea>
+				
+				<!-- <textarea name="descripcion" placeholder="Descripción"></textarea> -->
 				<button type="submit">Agregar</button>
 
 			</form>
